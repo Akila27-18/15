@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<h2 class="mb-4">Student Feedback Form</h2>
+<form method="POST" novalidate>
+  {{ form.hidden_tag() }}
+
+  <div class="mb-3">
+    {{ form.name.label(class="form-label") }}
+    {{ form.name(class="form-control", placeholder="Enter your name") }}
+    {% if form.name.errors %}
+      <div class="text-danger">{{ form.name.errors[0] }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.email.label(class="form-label") }}
+    {{ form.email(class="form-control", placeholder="Enter your email") }}
+    {% if form.email.errors %}
+      <div class="text-danger">{{ form.email.errors[0] }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.course.label(class="form-label") }}
+    {{ form.course(class="form-control", placeholder="Course name") }}
+    {% if form.course.errors %}
+      <div class="text-danger">{{ form.course.errors[0] }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.rating.label(class="form-label") }}
+    {{ form.rating(class="form-control", placeholder="Rating from 1 to 10") }}
+    {% if form.rating.errors %}
+      <div class="text-danger">{{ form.rating.errors[0] }}</div>
+    {% endif %}
+  </div>
+
+  <div class="mb-3">
+    {{ form.suggestion.label(class="form-label") }}
+    {{ form.suggestion(class="form-control", placeholder="Optional suggestions", rows=3) }}
+  </div>
+
+  {{ form.submit(class="btn btn-primary") }}
+</form>
+{% endblock %}
